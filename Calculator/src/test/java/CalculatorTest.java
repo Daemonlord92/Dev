@@ -2,6 +2,7 @@ import org.blitmatthew.Calculator;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
 
@@ -23,5 +24,14 @@ public class CalculatorTest {
         assertEquals(4, calculator.add(2,2));
     }
 
+    @Test
+    public void Calculator_divide_ShouldReturnInt() {
+        assertEquals(5, calculator.divide(15,3));
+    }
 
+    @Test
+    public void Calculator_divide_ShouldThrowExceptionDivideByZero() {
+        Throwable throwable = assertThrows(ArithmeticException.class, () -> calculator.divide(5,0));
+        assertEquals("Cannot divide by zero!", throwable.getMessage());
+    }
 }
