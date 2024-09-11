@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Demon Book | Summon Demon</title>
+</head>
+<body>
+    <h1>Summoning the Demon</h1>
+    <div>
+        <form method="post" th:object="${demon}" th:action="@{/demon/add}">
+            <label for="name">Name:</label>
+            <input id="name" type="text" placeholder="Name" th:field="${demon.name}">
+            <label for="height">Height:</label>
+            <input id="height" type="number" th:field="${demon.height}">
+            <label for="weight">Weight:</label>
+            <input id="weight" type="number" th:field="${demon.weight}">
+            <label for="description">Description:</label>
+            <input id="description" type="text" th:field="${demon.description}">
+            <input type="submit" value="Summon the Demon">
+        </form>
+    </div>
+</body>
+</html>

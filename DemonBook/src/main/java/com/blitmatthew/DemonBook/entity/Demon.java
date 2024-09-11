@@ -1,15 +1,13 @@
 package com.blitmatthew.DemonBook.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Demon {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    //@Column(nullable = false, unique = true, length = 300)
     private String name;
     private Double height;
     private Double weight;
