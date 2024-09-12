@@ -2,13 +2,12 @@ package com.blitmatthew.DemonBook.controller;
 
 import com.blitmatthew.DemonBook.entity.Demon;
 import com.blitmatthew.DemonBook.service.DemonService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,8 +37,28 @@ public class DemonController {
     }
 
     @PostMapping("/add")
-    public String addDemon(@ModelAttribute("demon") Demon demon) {
+    public String addDemon(@ModelAttribute("demon") @Valid Demon demon, Errors errors) {
+        if(errors.hasErrors()) {
+            return "addDemon";
+        }
         demonService.saveDemon(demon);
+        return "redirect:/demon/";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String updateDemon(@PathVariable Long id, Model model) {
+        Demon demon = demonService.getDemonById(id);
+        model.addAttribute("demon", demon);
+        return "editDemon";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateDemon(@PathVariable Long id, @ModelAttribute("demon") @Valid Demon demon, Errors errors) {
+        if (errors.hasErrors()) {
+            return "editDemon";
+        }
+
+        demonService.updateDemon(demon, id);
         return "redirect:/demon/";
     }
 }
