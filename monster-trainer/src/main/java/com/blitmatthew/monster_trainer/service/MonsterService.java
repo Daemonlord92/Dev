@@ -8,4 +8,6 @@ public interface MonsterService {
     Monster saveMonster(Monster monster);
     List<Monster> getAllMonsters();
     Monster getMonsterById(Long id);
+    List<Monster> getMonsterBySpeciesType(String species);
+    List<Monster> getMonstersWithPriceGreaterThan(Double price);
 }

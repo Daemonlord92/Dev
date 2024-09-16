@@ -29,4 +29,14 @@ public class MonsterServiceImpl implements MonsterService {
         return monsterRepository.findById(id).orElseThrow(() ->
                 new EntityNotFoundException("Monster with id of " + id + " was not found!"));
     }
+
+    @Override
+    public List<Monster> getMonsterBySpeciesType(String species) {
+        return monsterRepository.findBySpecies(species);
+    }
+
+    @Override
+    public List<Monster> getMonstersWithPriceGreaterThan(Double price) {
+        return monsterRepository.findByPriceGreaterThan(price);
+    }
 }

@@ -1,11 +1,13 @@
 package com.blitmatthew.monster_trainer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -26,4 +28,8 @@ public class Monster {
     private Long attackPower;
     @Column(nullable = false)
     private Long defensePower;
+
+    @ManyToOne
+    @JsonIgnore
+    private Trainer trainer;
 }
