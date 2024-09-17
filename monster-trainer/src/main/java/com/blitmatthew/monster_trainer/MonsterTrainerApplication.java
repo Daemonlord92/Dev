@@ -37,7 +37,10 @@ public class MonsterTrainerApplication implements CommandLineRunner {
 		));
 		Trainer trainer = trainerRepository.save(new Trainer(0L, "Ash Ketchum", 25, 100, 50, new ArrayList<>()));
 		Monster monster = monsterRepository.save(new Monster(0L, "Pikachu", "Electric Mouse", 15.00, 2.25, 100000.00, 2500L, 3500L, trainer));
+		trainer.getMonsterList().add(monster);
+		trainer =trainerRepository.save(trainer);
 		log.info(monsterRepository.findBySpecies("Skeleton").toString());
 		log.info(monsterRepository.findByPriceGreaterThan(40.00).toString());
+		log.info(trainer.toString());
 	}
 }

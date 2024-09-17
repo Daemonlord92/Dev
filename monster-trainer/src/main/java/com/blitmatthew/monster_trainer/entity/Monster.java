@@ -31,5 +31,6 @@ public class Monster {
 
     @ManyToOne
     @JsonIgnore
+    @ToString.Exclude
     private Trainer trainer;
 }

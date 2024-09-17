@@ -39,4 +39,12 @@ public class MonsterServiceImpl implements MonsterService {
     public List<Monster> getMonstersWithPriceGreaterThan(Double price) {
         return monsterRepository.findByPriceGreaterThan(price);
     }
+
+    @Override
+    public Monster updateMonster(Monster monster) {
+        Monster oldMonsterData = monsterRepository.findById(monster.getId()).orElseThrow(() ->
+                new EntityNotFoundException("Id not found"));
+//        Monster oldMonsterData = monsterRepository.findById(monster.getId()).get();
+        return monsterRepository.save(monster);
+    }
 }
