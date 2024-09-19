@@ -46,4 +46,14 @@ public class MonsterController {
         return ResponseEntity.ok(monsterService.getMonstersWithPriceGreaterThan(price));
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<Monster> postUpdateMonster(@RequestBody Monster monster) {
+        return ResponseEntity.ok(monsterService.updateMonster(monster));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> postDeleteMonster(@PathVariable Long id) {
+        monsterService.deleteMonster(id);
+        return ResponseEntity.ok().body("Monster has been delete");
+    }
 }
