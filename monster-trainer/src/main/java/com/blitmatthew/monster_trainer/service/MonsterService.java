@@ -11,4 +11,5 @@ public interface MonsterService {
     List<Monster> getMonsterBySpeciesType(String species);
     List<Monster> getMonstersWithPriceGreaterThan(Double price);
     Monster updateMonster(Monster monster);
+    void deleteMonster(Long id);
 }

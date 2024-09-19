@@ -47,4 +47,10 @@ public class MonsterServiceImpl implements MonsterService {
 //        Monster oldMonsterData = monsterRepository.findById(monster.getId()).get();
         return monsterRepository.save(monster);
     }
+
+    @Override
+    public void deleteMonster(Long id) {
+        if(!monsterRepository.existsById(id)) throw new EntityNotFoundException("Monster with id " + id + " not found!");
+        monsterRepository.deleteById(id);
+    }
 }

@@ -29,7 +29,7 @@ public class MonsterTrainerApplication implements CommandLineRunner {
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
+	public void run(String... args) {
 		monsterRepository.saveAll(List.of(
 			new Monster(0L, "Skellyface", "Skeleton", 80.00, 5.9, 50.00,10L, 5L, null),
 				new Monster(0L, "Impy", "Imp", 50.00, 2.75, 25.00, 5L, 5L, null),
