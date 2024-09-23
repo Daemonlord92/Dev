@@ -25,25 +25,27 @@ public class SecurityConfig {
                 .httpBasic(Customizer.withDefaults())
                 .authorizeHttpRequests(mangos -> mangos
                         .requestMatchers(HttpMethod.GET,"/api/v1/monster/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/monster/update").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/monster/delete/*").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 );
         return http.build();
     }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails admin = User.builder()
-                .username("admin")
-                .password(passwordEncoder().encode("adminPass"))
-                .roles("ADMIN")
-                .build();
-        UserDetails user = User.builder()
-                .username("user")
-                .password(passwordEncoder().encode("userPass"))
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(admin, user);
-    }
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        UserDetails admin = User.builder()
+//                .username("admin")
+//                .password(passwordEncoder().encode("adminPass"))
+//                .roles("ADMIN")
+//                .build();
+//        UserDetails user = User.builder()
+//                .username("user")
+//                .password(passwordEncoder().encode("userPass"))
+//                .roles("USER")
+//                .build();
+//        return new InMemoryUserDetailsManager(admin, user);
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

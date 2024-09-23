@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class DefaultExceptionHandler {
     Logger logger = LoggerFactory.getLogger(DefaultExceptionHandler.class);
 
-    @ExceptionHandler(EntityNotFoundException.class)
+    @ExceptionHandler({EntityNotFoundException.class, UserNotFoundException.class})
     public ResponseEntity<ApiError> exceptionHandler(EntityNotFoundException e, HttpServletRequest request){
         logger.error(e.getMessage());
         ApiError apiError = new ApiError(

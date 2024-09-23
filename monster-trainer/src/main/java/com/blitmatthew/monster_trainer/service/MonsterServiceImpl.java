@@ -4,11 +4,13 @@ import com.blitmatthew.monster_trainer.entity.Monster;
 import com.blitmatthew.monster_trainer.repository.MonsterRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Primary
 public class MonsterServiceImpl implements MonsterService {
 
     @Autowired

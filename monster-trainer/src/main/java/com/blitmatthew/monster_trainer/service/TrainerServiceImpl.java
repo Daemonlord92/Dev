@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("ADMIN")
 public class TrainerServiceImpl implements TrainerService{
 
     @Autowired

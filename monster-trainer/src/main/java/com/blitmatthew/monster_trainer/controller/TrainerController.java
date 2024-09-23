@@ -3,6 +3,7 @@ package com.blitmatthew.monster_trainer.controller;
 import com.blitmatthew.monster_trainer.entity.Trainer;
 import com.blitmatthew.monster_trainer.service.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @RequestMapping("/api/v1/trainer")
 public class TrainerController {
     @Autowired
+    @Qualifier("ADMIN")
     private TrainerService trainerService;
 
     @GetMapping("/")
