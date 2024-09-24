@@ -1,0 +1,7 @@
+com.blitmatthew.monster_trainer
+com.blitmatthew.monster_trainer.config
+com.blitmatthew.monster_trainer.controller
+com.blitmatthew.monster_trainer.entity
+com.blitmatthew.monster_trainer.exception
+com.blitmatthew.monster_trainer.repository
+com.blitmatthew.monster_trainer.service
