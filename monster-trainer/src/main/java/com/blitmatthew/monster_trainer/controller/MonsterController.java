@@ -1,5 +1,6 @@
 package com.blitmatthew.monster_trainer.controller;
 
+import com.blitmatthew.monster_trainer.dto.PostNewMonster;
 import com.blitmatthew.monster_trainer.entity.Monster;
 import com.blitmatthew.monster_trainer.service.MonsterService;
 import lombok.Getter;
@@ -22,7 +23,7 @@ public class MonsterController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Monster> postNewMonster(@RequestBody Monster monster){
+    public ResponseEntity<Monster> postNewMonster(@RequestBody PostNewMonster monster){
         return ResponseEntity.ok(monsterService.saveMonster(monster));
     }
 

@@ -1,7 +1,10 @@
 package com.blitmatthew.monster_trainer.service;
 
+import com.blitmatthew.monster_trainer.dto.PostNewMonster;
 import com.blitmatthew.monster_trainer.entity.Monster;
+import com.blitmatthew.monster_trainer.mapper.NewMonsterMapper;
 import com.blitmatthew.monster_trainer.repository.MonsterRepository;
+import com.blitmatthew.monster_trainer.repository.TrainerRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -15,10 +18,22 @@ public class MonsterServiceImpl implements MonsterService {
 
     @Autowired
     private MonsterRepository monsterRepository;
+    @Autowired
+    private TrainerRepository trainerRepository;
 
     @Override
-    public Monster saveMonster(Monster monster) {
-        return monsterRepository.save(monster);
+    public Monster saveMonster(PostNewMonster monster) {
+        Monster newMonster = Monster.builder()
+                .name(monster.name())
+                .height(monster.height())
+                .weight(monster.weight())
+                .price(monster.price())
+                .species(monster.species())
+                .defensePower(monster.defensePower())
+                .attackPower(monster.attackPower())
+                .trainer(trainerRepository.findById(monster.trainerId()).orElse(null))
+                .build();
+        return monsterRepository.save(newMonster);
     }
 
     @Override
