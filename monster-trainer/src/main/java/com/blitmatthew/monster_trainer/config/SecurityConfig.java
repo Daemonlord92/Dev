@@ -35,6 +35,7 @@ public class SecurityConfig {
 //                .httpBasic(Customizer.withDefaults())
                 .authorizeHttpRequests(mangos -> mangos
                         .requestMatchers(HttpMethod.GET,"/api/v1/monster/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/*").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/api/v1/monster/update").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/monster/delete/*").hasRole("ADMIN")
                         .anyRequest().authenticated()
