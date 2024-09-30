@@ -49,4 +49,11 @@ public class DemonServiceImpl implements DemonService {
         return demonRepository.findById(id).orElseThrow(() ->
                 new EntityNotFoundException("Demon with id of " + id + " does not exist!"));
     }
+
+    @Override
+    public void deleteDemonById(Long id) {
+        Demon demon = demonRepository.findById(id).orElseThrow(() ->
+                new EntityNotFoundException("Demon with id of " + id +" does not exist!"));
+        demonRepository.delete(demon);
+    }
 }

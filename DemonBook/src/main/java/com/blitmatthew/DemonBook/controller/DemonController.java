@@ -61,4 +61,10 @@ public class DemonController {
         demonService.updateDemon(demon, id);
         return "redirect:/demon/";
     }
+
+    @GetMapping("/delete/{id}")
+    public String deleteDemon(@PathVariable Long id) {
+        demonService.deleteDemonById(id);
+        return "redirect:/demon/";
+    }
 }

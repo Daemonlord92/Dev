@@ -9,4 +9,5 @@ public interface DemonService {
     List<Demon> getAllDemons();
     void updateDemon(Demon demon, Long id);
     Demon getDemonById(Long id);
+    void deleteDemonById(Long id);
 }

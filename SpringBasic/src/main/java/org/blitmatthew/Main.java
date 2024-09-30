@@ -9,8 +9,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-//        Engine engine1 = new V6Engine();
+        Engine engine1 = new V6Engine();
 //        Engine engine2 = new V8Engine();
+        Car car3 = new Car(engine1);
         ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 
         Car car =   context.getBean("carV6", Car.class);//new Car(context.getBean("v6Engine", V6Engine.class));

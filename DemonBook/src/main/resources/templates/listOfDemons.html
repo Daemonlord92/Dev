@@ -6,16 +6,24 @@
 </head>
 <body>
     <h1>Demon List</h1>
+    <a th:href="@{/demon/add}">Summon the new Demon</a>
     <div th:each="demon: ${demons}">
         <ul>
             <li>
-                <h3 th:text="${demon.getName()}"></h3>
+                <h3 th:text="${demon.name}"></h3>
             </li>
             <li>
                 <p th:text="${demon.getHeight()}"></p>
             </li>
             <li>
                 <p th:text="${demon.getWeight()}"></p>
+            </li>
+            <li>
+                <!-- -->
+                <a th:href="@{'/demon/edit/' + ${demon.id}}">Edit this Demon</a>
+            </li>
+            <li>
+                <a th:href="@{'/demon/delete/' + ${demon.id}}">Delete the Demon</a>
             </li>
         </ul>
     </div>
