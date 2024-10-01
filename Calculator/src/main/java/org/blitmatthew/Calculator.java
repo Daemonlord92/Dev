@@ -2,6 +2,8 @@ package org.blitmatthew;
 
 public class Calculator {
 
+    private String cantChangeMe = "HAHAHAHAHA";
+
     public int add(int a, int b) {
         return a + b;
     }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/monster")
+@RequestMapping("/api/v1/monster ")
 public class MonsterController {
 
     private MonsterService monsterService;
