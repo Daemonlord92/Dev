@@ -6,6 +6,7 @@ import com.blitmatthew.monster_trainer.mapper.NewMonsterMapper;
 import com.blitmatthew.monster_trainer.repository.MonsterRepository;
 import com.blitmatthew.monster_trainer.repository.TrainerRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -18,21 +19,16 @@ public class MonsterServiceImpl implements MonsterService {
 
     @Autowired
     private MonsterRepository monsterRepository;
+
     @Autowired
     private TrainerRepository trainerRepository;
 
+    @Autowired
+    private NewMonsterMapper monsterMapper;  // Injected using Spring
+
     @Override
     public Monster saveMonster(PostNewMonster monster) {
-        Monster newMonster = Monster.builder()
-                .name(monster.name())
-                .height(monster.height())
-                .weight(monster.weight())
-                .price(monster.price())
-                .species(monster.species())
-                .defensePower(monster.defensePower())
-                .attackPower(monster.attackPower())
-                .trainer(trainerRepository.findById(monster.trainerId()).orElse(null))
-                .build();
+        Monster newMonster = monsterMapper.fromDto(monster);  // Use the injected mapper
         return monsterRepository.save(newMonster);
     }
 
@@ -61,7 +57,6 @@ public class MonsterServiceImpl implements MonsterService {
     public Monster updateMonster(Monster monster) {
         Monster oldMonsterData = monsterRepository.findById(monster.getId()).orElseThrow(() ->
                 new EntityNotFoundException("Id not found"));
-//        Monster oldMonsterData = monsterRepository.findById(monster.getId()).get();
         return monsterRepository.save(monster);
     }
 

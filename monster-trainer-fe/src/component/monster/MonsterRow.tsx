@@ -1,22 +1,24 @@
 import { TableCell, TableRow } from "@mui/material";
+import Monster from "../../types/Monster";
 
-function MonsterRow() {
+function MonsterRow({data}:{data:Monster}) {
+    const {id, name, species, attackPower, defensePower, price} = data
     return (
-        <TableRow hover tabIndex={-1}>
+        <TableRow key={id} hover tabIndex={-1}>
             <TableCell>
-                Skully
+                {name}
             </TableCell>
             <TableCell>
-                Flying Skull
+                {species}
             </TableCell>
             <TableCell>
-                15
+                {attackPower}
             </TableCell>
             <TableCell>
-                5
+                {defensePower}
             </TableCell>
             <TableCell>
-                $ 50.00
+                $ {price}
             </TableCell>
         </TableRow>
     );
