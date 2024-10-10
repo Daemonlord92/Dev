@@ -1,7 +1,9 @@
 import { TableCell, TableRow } from "@mui/material";
 import Monster from "../../types/Monster";
+import { useNavigate } from "react-router-dom";
 
 function MonsterRow({data}:{data:Monster}) {
+    const navigate = useNavigate()
     const {id, name, species, attackPower, defensePower, price} = data
     return (
         <TableRow key={id} hover tabIndex={-1}>
@@ -19,6 +21,9 @@ function MonsterRow({data}:{data:Monster}) {
             </TableCell>
             <TableCell>
                 $ {price}
+            </TableCell>
+            <TableCell>
+                <a onClick={() => navigate("/update", {state: data})}>Update Monster</a>
             </TableCell>
         </TableRow>
     );
