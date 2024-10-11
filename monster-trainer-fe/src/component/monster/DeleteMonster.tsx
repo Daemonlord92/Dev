@@ -32,7 +32,7 @@ function DeleteMonster({id, open, closeModal, openModal}:{id:number, open:boolea
                 open={open}
                 onClose={closeModal}
                 >
-                   <Box color={"white"} sx={{my:10, mx:'auto', maxWidth:50, maxHeight: 50}}>
+                   <Box color={"white"} bgcolor={"black"} sx={{my:10, mx:'auto', maxWidth: '40%'}}>
                         <Typography variant="h4">
                             Do you want to delete this Monster
                         </Typography>
