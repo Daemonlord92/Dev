@@ -8,7 +8,10 @@ function DeleteMonster({id, open, closeModal, openModal}:{id:number, open:boolea
 
     const deleteMonster = async () => {
         const request = await fetch(import.meta.env.VITE_API_URL + "/monster/delete/" + id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                "Authorization": "Bearer " + sessionStorage.getItem("Authorization")
+            }
         })
         const response = request.json()
         return response;

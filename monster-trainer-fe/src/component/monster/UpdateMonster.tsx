@@ -40,7 +40,8 @@ function UpdateMonster() {
                 method: "PUT",
                 body: JSON.stringify(newMonster),
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + sessionStorage.getItem("Authorization")
                 }
             })
 

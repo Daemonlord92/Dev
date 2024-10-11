@@ -30,12 +30,17 @@ function MonsterRow({data}:{data:Monster}) {
             <TableCell>
                 $ {price}
             </TableCell>
-            <TableCell>
-                <a onClick={() => navigate("/update", {state: data})}>Update Monster</a>
-            </TableCell>
-            <TableCell>
-                <DeleteMonster id={id} open={open} openModal={openModal} closeModal={closeModal} />
-            </TableCell>
+            {sessionStorage.getItem("Authorization") ?
+            <>
+                <TableCell>
+                    <a onClick={() => navigate("/update", {state: data})}>Update Monster</a>
+                </TableCell>
+                <TableCell>
+                    <DeleteMonster id={id} open={open} openModal={openModal} closeModal={closeModal} />
+                </TableCell> 
+            </>
+                : null }
+            
         </TableRow>
     );
 }
