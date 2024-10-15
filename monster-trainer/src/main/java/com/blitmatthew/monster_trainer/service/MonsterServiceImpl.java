@@ -1,5 +1,6 @@
 package com.blitmatthew.monster_trainer.service;
 
+import com.blitmatthew.monster_trainer.annotations.LogExecutionTime;
 import com.blitmatthew.monster_trainer.dto.PostNewMonster;
 import com.blitmatthew.monster_trainer.entity.Monster;
 import com.blitmatthew.monster_trainer.mapper.NewMonsterMapper;
@@ -26,6 +27,7 @@ public class MonsterServiceImpl implements MonsterService {
     @Autowired
     private NewMonsterMapper monsterMapper;  // Injected using Spring
 
+    @LogExecutionTime
     @Override
     public Monster saveMonster(PostNewMonster monster) {
         Monster newMonster = monsterMapper.fromDto(monster);  // Use the injected mapper
@@ -48,6 +50,7 @@ public class MonsterServiceImpl implements MonsterService {
         return monsterRepository.findBySpecies(species);
     }
 
+    @LogExecutionTime
     @Override
     public List<Monster> getMonstersWithPriceGreaterThan(Double price) {
         return monsterRepository.findByPriceGreaterThan(price);
@@ -60,6 +63,7 @@ public class MonsterServiceImpl implements MonsterService {
         return monsterRepository.save(monster);
     }
 
+    @LogExecutionTime
     @Override
     public void deleteMonster(Long id) {
         if(!monsterRepository.existsById(id)) throw new EntityNotFoundException("Monster with id " + id + " not found!");
